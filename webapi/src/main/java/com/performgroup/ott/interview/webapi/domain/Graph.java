@@ -27,7 +27,7 @@ public class Graph {
     final private Set<Edge> edges;
 
     public Graph() {
-        id = UUID.randomUUID().toString();
+        id = "1";
         nodes = new HashSet<>();
         edges = new HashSet<>();
         nodesMap = new HashMap<>();

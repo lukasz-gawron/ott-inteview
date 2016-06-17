@@ -1,4 +1,4 @@
-package com.performgroup.ott.interview.webapi.service;
+package com.performgroup.ott.interview.webapi.service.command;
 
 import com.performgroup.ott.interview.api.update.GraphDto;
 import com.performgroup.ott.interview.webapi.domain.Graph;
@@ -20,4 +20,6 @@ class GraphMapperImpl implements GraphMapper {
                         .forEach(adjacentNodeId -> graph.addEdge(nodeDto.getId(), adjacentNodeId)));
         return graph;
     }
+
+
 }

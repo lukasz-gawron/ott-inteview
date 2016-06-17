@@ -1,4 +1,4 @@
-package com.performgroup.ott.interview.webapi.service;
+package com.performgroup.ott.interview.webapi.service.command;
 
 import com.performgroup.ott.interview.api.update.GraphDto;
 

@@ -19,7 +19,7 @@ public class Edge {
 
 
     @JsonCreator
-    public Edge(@JsonProperty("srcNodeId") String srcNodeId, @JsonProperty("dstNodeIs") String dstNodeId) {
+    public Edge(@JsonProperty("srcNodeId") String srcNodeId, @JsonProperty("dstNodeId") String dstNodeId) {
         if (!StringUtils.hasText(srcNodeId) || !StringUtils.hasText(dstNodeId)) {
             throw new GraphException("Lack of node id");
         }

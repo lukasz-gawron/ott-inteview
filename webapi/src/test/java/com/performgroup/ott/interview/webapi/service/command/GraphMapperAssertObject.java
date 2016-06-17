@@ -1,4 +1,4 @@
-package com.performgroup.ott.interview.webapi.service;
+package com.performgroup.ott.interview.webapi.service.command;
 
 import com.performgroup.ott.interview.webapi.domain.Edge;
 import com.performgroup.ott.interview.webapi.domain.Graph;

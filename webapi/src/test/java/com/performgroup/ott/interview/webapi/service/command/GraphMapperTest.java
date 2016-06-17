@@ -1,4 +1,4 @@
-package com.performgroup.ott.interview.webapi.service;
+package com.performgroup.ott.interview.webapi.service.command;
 
 import com.performgroup.ott.interview.api.update.GraphDto;
 import com.performgroup.ott.interview.webapi.domain.Edge;
@@ -12,7 +12,7 @@ import java.util.Set;
 import static com.performgroup.ott.interview.webapi.domain.GraphDtoMother.*;
 import static com.performgroup.ott.interview.webapi.domain.NodeMother.aNode1;
 import static com.performgroup.ott.interview.webapi.domain.NodeMother.aNode2;
-import static com.performgroup.ott.interview.webapi.service.GraphMapperAssertObject.assertThat;
+import static com.performgroup.ott.interview.webapi.service.command.GraphMapperAssertObject.assertThat;
 import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
