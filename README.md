@@ -19,9 +19,19 @@ https://maven.apache.org/install.html
 
 ### Build and run it from root project directory ###
 
+
+
+
+```
+#!bash
+
 mvn package
 java -jar webapi/target/ott-webapi-1.0.0-SNAPSHOT.jar
 java -jar loader/target/ott-loader-1.0.0-SNAPSHOT-jar-with-dependencies.jar load <absolute path to directory with node xmls>
+```
+
+
+
 
 
 ### TODO ###
