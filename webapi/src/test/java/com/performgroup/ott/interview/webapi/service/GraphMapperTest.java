@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.performgroup.ott.interview.webapi.domain.NodeDtoMother.*;
+import static com.performgroup.ott.interview.webapi.domain.GraphDtoMother.*;
 import static com.performgroup.ott.interview.webapi.domain.NodeMother.aNode1;
 import static com.performgroup.ott.interview.webapi.domain.NodeMother.aNode2;
 import static com.performgroup.ott.interview.webapi.service.GraphMapperAssertObject.assertThat;

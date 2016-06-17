@@ -10,7 +10,7 @@ import static java.util.Arrays.asList;
 /**
  * Created by lukasz.gawron on 17/06/16.
  */
-public class NodeDtoMother {
+public class GraphDtoMother {
 
     public static final String NODE_1_ID = "1";
     public static final String NODE_2_ID = "2";
