@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.performgroup.ott.inteview</groupId>
+        <groupId>com.performgroup.ott.interview</groupId>
         <artifactId>parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../parent/pom.xml</relativePath>
@@ -93,7 +93,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>3.0.0.RELEASE</version>
+            <version>4.1.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.performgroup.ott.interview</groupId>

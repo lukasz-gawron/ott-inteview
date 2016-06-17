@@ -6,6 +6,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.client.RestTemplate;
@@ -35,7 +36,7 @@ class LoadGraphCommand implements Command {
         this.options = options;
         this.dirPath = options[DIR_PATH_INDEX];
         this.marshaller = new Jaxb2Marshaller();
-        this.marshaller.setClassesToBeBound(new Class[]{NodeDto.class});
+        this.marshaller.setClassesToBeBound(NodeDto.class);
     }
 
     private void validateParameters(String[] options) {
@@ -68,7 +69,7 @@ class LoadGraphCommand implements Command {
 
     private void addGraph(GraphDto graphDto) {
         RestTemplate template = new RestTemplate();
-        template.setMessageConverters(asList(new MappingJackson2HttpMessageConverter()));
+        template.setMessageConverters(Arrays.<HttpMessageConverter<?>>asList(new MappingJackson2HttpMessageConverter()));
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
