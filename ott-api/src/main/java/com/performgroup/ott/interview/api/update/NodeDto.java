@@ -1,16 +1,18 @@
 package com.performgroup.ott.interview.api.update;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
 /**
  * Created by lukasz.gawron on 17/06/16.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "node")
 public class NodeDto {
     private String id;
     private String label;
+    @XmlElementWrapper(name = "adjacentNodes")
+    @XmlElement(name = "id")
     private List<String> adjacentNodes;
 
     public NodeDto() {

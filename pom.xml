@@ -11,6 +11,7 @@
         <module>parent</module>
         <module>webapi</module>
         <module>ott-api</module>
+        <module>loader</module>
     </modules>
     <packaging>pom</packaging>
   <name>OTT Interview</name>

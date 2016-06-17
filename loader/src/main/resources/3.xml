@@ -1,0 +1,9 @@
+<node>
+    <id>3</id>
+    <label>Node 3</label>
+    <adjacentNodes>
+        <id>1</id>
+        <id>2</id>
+        <id>3</id>
+    </adjacentNodes>
+</node>
