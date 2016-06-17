@@ -2,6 +2,7 @@ package com.performgroup.ott.interview.webapi.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.util.StringUtils;
 
 /**
  * Created by lukasz.gawron on 17/06/16.
@@ -19,6 +20,9 @@ public class Edge {
 
     @JsonCreator
     public Edge(@JsonProperty("srcNodeId") String srcNodeId, @JsonProperty("dstNodeIs") String dstNodeId) {
+        if (!StringUtils.hasText(srcNodeId) || !StringUtils.hasText(dstNodeId)) {
+            throw new GraphException("Lack of node id");
+        }
         this.srcNodeId = srcNodeId;
         this.dstNodeId = dstNodeId;
     }

@@ -33,20 +33,20 @@ public class GraphRepositoryIT {
     @Test
     public void should_store_graph() {
         //given
-        Graph graph = new Graph();
+        Graph expected = new Graph();
         Node node1 = aNode1();
         Node node2 = aNode2();
-        graph.addNode(aNode1());
-        graph.addNode(aNode2());
-        graph.addEdge(node1.getId(), node2.getId());
+        expected.addNode(aNode1());
+        expected.addNode(aNode2());
+        expected.addEdge(node1.getId(), node2.getId());
 
         //when
-        objectUnderTest.save(graph);
+        objectUnderTest.save(expected);
 
         //then
-        Graph graph1 = objectUnderTest.findOne(graph.getId());
-        assertThat(graph, notNullValue());
-        assertEquals(graph.getEdges(), graph.getEdges());
-        assertEquals(graph.getNodes(), graph1.getNodes());
+        Graph actual = objectUnderTest.findOne(expected.getId());
+        assertThat(expected, notNullValue());
+        assertEquals(expected.getEdges(), expected.getEdges());
+        assertEquals(expected.getNodes(), actual.getNodes());
     }
 }

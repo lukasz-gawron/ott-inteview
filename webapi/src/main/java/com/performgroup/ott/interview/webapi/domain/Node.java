@@ -2,6 +2,7 @@ package com.performgroup.ott.interview.webapi.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.util.StringUtils;
 
 /**
  * Created by lukasz.gawron on 17/06/16.
@@ -12,6 +13,9 @@ public class Node {
 
     @JsonCreator
     public Node(@JsonProperty("id") String id, @JsonProperty("label") String label) {
+        if (!StringUtils.hasText(id) || !StringUtils.hasText(label)) {
+            throw new GraphException("Lack of required parameters");
+        }
         this.id = id;
         this.label = label;
     }
