@@ -8,4 +8,4 @@ I managed to implement service layer for adding graphs based on Elasticsearch st
 
 * searching shortest path in graph
 * implement UI application based on some MVP/MVVM  pattern e.g. using JavaFX powered by HTTP service
-* add tests in data loader module
+* add tests in data loader module, add abstraction layer on accessing file system to make file loading testable
