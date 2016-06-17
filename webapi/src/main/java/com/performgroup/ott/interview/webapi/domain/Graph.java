@@ -1,30 +1,47 @@
 package com.performgroup.ott.interview.webapi.domain;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import java.util.*;
 
 import static java.util.Collections.unmodifiableSet;
 
 /**
- * Created by lukasz on 17/06/16.
+ * Created by lukasz.gawron on 17/06/16.
  */
+@Document(indexName = "graphs")
 public class Graph {
+    @Id
+    final private String id;
     final private Map<String, Node> nodesMap;
+    @Field(type = FieldType.Nested)
     final private Set<Node> nodes;
+    @Field(type = FieldType.Nested)
     final private Set<Edge> edges;
 
     public Graph() {
+        id = UUID.randomUUID().toString();
         nodes = new HashSet<>();
         edges = new HashSet<>();
         nodesMap = new HashMap<>();
     }
 
     /**
-     * Get list of distinct nodes in a graph
+     * Get unique identifier of this graph
      *
-     * @return
+     * @return identifier
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Get unmodifiable set of distinct nodes in a graph
+     *
+     * @return get unmodifiable set of nodes
      */
     public Set<Node> getNodes() {
         return unmodifiableSet(nodes);
@@ -60,6 +77,11 @@ public class Graph {
         return edge;
     }
 
+    /**
+     * Gets unmodifiable set of graph edges
+     *
+     * @return unmodifiable set of graph edges
+     */
     public Set<Edge> getEdges() {
         return unmodifiableSet(edges);
     }

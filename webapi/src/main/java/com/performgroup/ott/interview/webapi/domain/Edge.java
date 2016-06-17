@@ -1,27 +1,28 @@
 package com.performgroup.ott.interview.webapi.domain;
 
-import org.springframework.util.StringUtils;
-
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Created by lukasz on 17/06/16.
+ * Created by lukasz.gawron on 17/06/16.
  */
 public class Edge {
     /**
      * Source node identifier
      */
-    private final String srcNodeId;
+    final private String srcNodeId;
     /**
      * Destination node identifier
      */
-    private final String dstNodeId;
+    final private String dstNodeId;
 
 
-    public Edge(String srcNodeId, String dstNodeId) {
+    @JsonCreator
+    public Edge(@JsonProperty("srcNodeId") String srcNodeId, @JsonProperty("dstNodeIs") String dstNodeId) {
         this.srcNodeId = srcNodeId;
         this.dstNodeId = dstNodeId;
     }
+
 
     public String getSrcNodeId() {
         return srcNodeId;
@@ -38,8 +39,7 @@ public class Edge {
 
         Edge edge = (Edge) o;
 
-        if (!srcNodeId.equals(edge.srcNodeId)) return false;
-        return dstNodeId.equals(edge.dstNodeId);
+        return srcNodeId.equals(edge.srcNodeId) && dstNodeId.equals(edge.dstNodeId);
 
     }
 
@@ -48,5 +48,13 @@ public class Edge {
         int result = srcNodeId.hashCode();
         result = 31 * result + dstNodeId.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Edge{" +
+                "srcNodeId='" + srcNodeId + '\'' +
+                ", dstNodeId='" + dstNodeId + '\'' +
+                '}';
     }
 }

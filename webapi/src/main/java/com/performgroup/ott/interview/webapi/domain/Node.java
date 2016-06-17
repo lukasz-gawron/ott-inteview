@@ -1,16 +1,21 @@
 package com.performgroup.ott.interview.webapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
- * Created by lukasz on 17/06/16.
+ * Created by lukasz.gawron on 17/06/16.
  */
 public class Node {
-    private String id;
-    private String label;
+    final private String id;
+    final private String label;
 
-    public Node(String id, String label) {
+    @JsonCreator
+    public Node(@JsonProperty("id") String id, @JsonProperty("label") String label) {
         this.id = id;
         this.label = label;
     }
+
 
     public String getId() {
         return id;
