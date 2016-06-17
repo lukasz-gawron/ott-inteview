@@ -2,6 +2,7 @@ package com.performgroup.ott.interview.webapi.domain;
 
 import org.junit.Test;
 
+import static com.performgroup.ott.interview.webapi.domain.NodeMother.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 import static org.assertj.core.api.Assertions.*;
@@ -15,7 +16,7 @@ public class GraphTest {
     @Test
     public void should_add_node_to_list_of_nodes_if_nodes_list_is_empty() {
         //given
-        Node node1 = NodeMother.aNode1();
+        Node node1 = aNode1();
 
         //when
         objectUnderTest.addNode(node1);
@@ -27,7 +28,7 @@ public class GraphTest {
     @Test
     public void should_throw_error_if_node_is_already_added() {
         //given
-        Node node1 = NodeMother.aNode1();
+        Node node1 = aNode1();
 
         //when
         objectUnderTest.addNode(node1);
@@ -41,8 +42,8 @@ public class GraphTest {
     @Test
     public void should_add_edge_if_connected_nodes_exists_in_graph() {
         //given
-        Node node1 = NodeMother.aNode1();
-        Node node2 = NodeMother.aNode2();
+        Node node1 = aNode1();
+        Node node2 = aNode2();
         objectUnderTest.addNode(node1);
         objectUnderTest.addNode(node2);
 
@@ -57,11 +58,11 @@ public class GraphTest {
     @Test
     public void should_not_add_edge_if_at_least_one_node_doesnt_exists_in_graph() {
         //given
-        Node node1 = NodeMother.aNode1();
-        Node node2 = NodeMother.aNode2();
+        Node node1 = aNode1();
+        Node node2 = aNode2();
         objectUnderTest.addNode(node1);
 
-        //then
+        //when and then
         assertThatExceptionOfType(GraphException.class)
                 .isThrownBy(() -> objectUnderTest.addEdge(node1.getId(), node2.getId()));
     }

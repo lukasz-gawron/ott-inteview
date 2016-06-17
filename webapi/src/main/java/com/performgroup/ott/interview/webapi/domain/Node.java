@@ -32,12 +32,15 @@ public class Node {
 
         Node node = (Node) o;
 
-        return id.equals(node.id);
+        if (!id.equals(node.id)) return false;
+        return label.equals(node.label);
 
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        int result = id.hashCode();
+        result = 31 * result + label.hashCode();
+        return result;
     }
 }

@@ -10,6 +10,10 @@ import java.util.*;
 import static java.util.Collections.unmodifiableSet;
 
 /**
+ * Graph domain representation, holds nodes and edges. Managed basic domain logic of graphs preventing creation of
+ * bad graph.
+ * Annotated with Elasticsearch annotations to make storing in Elasticsearch possible.
+ * <p>
  * Created by lukasz.gawron on 17/06/16.
  */
 @Document(indexName = "graphs")
