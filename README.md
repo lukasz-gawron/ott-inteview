@@ -12,7 +12,7 @@ Requirements are:
 
 * Java 1.8
 
-https://www.java.com/pl/download/
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
 * Apache maven
 
