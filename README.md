@@ -23,7 +23,7 @@ https://maven.apache.org/install.html
 
 
 
-Node xmls are in /ott-challenge/loader/src/main/resources, provide absolute path for this directory for laoder to load it.
+Node xmls are in /ott-interview/loader/src/main/resources, provide absolute path for this directory for laoder to load it eg. {path_to_ott-interview_dir}\loader\src\main\resources
 
 ```
 #!bash
