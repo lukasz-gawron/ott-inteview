@@ -25,19 +25,13 @@ https://maven.apache.org/install.html
 
 Node xmls are in /ott-interview/loader/src/main/resources, provide absolute path for this directory for laoder to load it eg. 
 
-```
-#!bash
-
-{path_to_ott-interview_dir}\loader\src\main\resources
-```
-
 
 ```
 #!bash
 
 mvn package
 java -jar webapi/target/ott-webapi-1.0.0-SNAPSHOT.jar
-java -jar loader/target/ott-loader-1.0.0-SNAPSHOT-jar-with-dependencies.jar load <absolute path to directory with node xmls>
+java -jar loader/target/ott-loader-1.0.0-SNAPSHOT-jar-with-dependencies.jar load {path_to_ott-interview_dir}\loader\src\main\resources
 ```
 
 Check browser at 
