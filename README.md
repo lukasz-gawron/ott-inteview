@@ -58,6 +58,6 @@ graph with all nodes and edges laoded should be displayed.
 * use graph ids in HTTP api instead of hardcoded so many graphs can be added, and API will be accessed in more RESTful way
 * define Elasticsearch schema mapping for graph storage for better performance, now its using default
 * add application logs to trace data flow
-* add tests in data loader module
+* add tests in data loader module and refactor it to have more cohesive componenents
 * add more tests for negative paths
 * make it runnable as a one command
