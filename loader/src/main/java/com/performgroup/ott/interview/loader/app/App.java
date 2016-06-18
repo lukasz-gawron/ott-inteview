@@ -15,15 +15,17 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
+        System.out.println("Data loader started...");
         if (args.length == 0) {
-            System.out.println("Lack of required parameters");
+            System.out.println("Lack of required parameters. Application stopped with error.");
             System.exit(EXIT_STATUS_CODE);
         }
         try {
             Command command = CommandFactory.create(args[0], args);
             command.execute();
+            System.out.println("Data loader finished successfully.");
         } catch (Exception e) {
-            System.err.println("Error during processing " + e.getMessage());
+            System.err.println("Application stopped with error: " + e.getMessage());
             System.exit(EXIT_STATUS_CODE);
         }
     }

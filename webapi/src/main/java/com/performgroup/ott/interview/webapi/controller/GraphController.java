@@ -2,6 +2,7 @@ package com.performgroup.ott.interview.webapi.controller;
 
 import com.performgroup.ott.interview.api.update.GraphDto;
 import com.performgroup.ott.interview.webapi.domain.GraphException;
+import com.performgroup.ott.interview.webapi.domain.GraphNotFoundException;
 import com.performgroup.ott.interview.webapi.service.command.GraphService;
 import com.performgroup.ott.interview.webapi.service.query.GraphQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
-import static org.springframework.http.HttpStatus.OK;
-import static org.springframework.http.HttpStatus.PRECONDITION_FAILED;
+import static org.springframework.http.HttpStatus.*;
 
 /**
  * Created by lukasz.gawron on 17/06/16.
@@ -33,8 +32,15 @@ public class GraphController {
     }
 
     @RequestMapping(value = "/graph", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public com.performgroup.ott.interview.api.view.GraphDto getGraph() {
-        return graphQueryService.getGraph();
+    public ResponseEntity<com.performgroup.ott.interview.api.view.GraphDto> getGraph() {
+        try {
+            com.performgroup.ott.interview.api.view.GraphDto result = graphQueryService.getGraph();
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        } catch (GraphNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @RequestMapping(value = "/graph", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

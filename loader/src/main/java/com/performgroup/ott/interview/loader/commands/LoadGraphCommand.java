@@ -2,6 +2,7 @@ package com.performgroup.ott.interview.loader.commands;
 
 import com.performgroup.ott.interview.api.update.GraphDto;
 import com.performgroup.ott.interview.api.update.NodeDto;
+import org.apache.commons.io.IOUtils;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -14,10 +15,10 @@ import org.springframework.web.client.RestTemplate;
 import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.*;
-
-import static java.util.Arrays.asList;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by lukasz on 17/06/16.
@@ -35,6 +36,10 @@ class LoadGraphCommand implements Command {
         validateParameters(options);
         this.options = options;
         this.dirPath = options[DIR_PATH_INDEX];
+        File dir = new File(dirPath);
+        if (!dir.isDirectory()) {
+            throw new IllegalArgumentException("Provided path is not directory path");
+        }
         this.marshaller = new Jaxb2Marshaller();
         this.marshaller.setClassesToBeBound(NodeDto.class);
     }
@@ -54,17 +59,26 @@ class LoadGraphCommand implements Command {
         List<NodeDto> nodes = new ArrayList<>();
         File[] files = dir.listFiles();
         for (File file : files) {
-            NodeDto dto;
-            try {
-                dto = (NodeDto) marshaller.unmarshal(new StreamSource(new FileInputStream(file)));
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException("Something goes terrible wrong");
-            }
+            NodeDto dto = unmarshalNodeFromFile(file);
             nodes.add(dto);
         }
         GraphDto graphDto = new GraphDto();
         graphDto.setNodes(nodes);
         addGraph(graphDto);
+    }
+
+    private NodeDto unmarshalNodeFromFile(File file) {
+        NodeDto dto;
+        InputStream is = null;
+        try {
+            is = new FileInputStream(file);
+            dto = (NodeDto) marshaller.unmarshal(new StreamSource(new FileInputStream(file)));
+        } catch (Exception e) {
+            throw new RuntimeException("Problem with reading file " + e.getMessage());
+        } finally {
+            IOUtils.closeQuietly(is);
+        }
+        return dto;
     }
 
     private void addGraph(GraphDto graphDto) {
