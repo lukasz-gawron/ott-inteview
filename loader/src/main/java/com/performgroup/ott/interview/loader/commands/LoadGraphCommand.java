@@ -68,17 +68,15 @@ class LoadGraphCommand implements Command {
     }
 
     private NodeDto unmarshalNodeFromFile(File file) {
-        NodeDto dto;
         InputStream is = null;
         try {
             is = new FileInputStream(file);
-            dto = (NodeDto) marshaller.unmarshal(new StreamSource(new FileInputStream(file)));
+            return (NodeDto) marshaller.unmarshal(new StreamSource(new FileInputStream(file)));
         } catch (Exception e) {
             throw new RuntimeException("Problem with reading file " + e.getMessage());
         } finally {
             IOUtils.closeQuietly(is);
         }
-        return dto;
     }
 
     private void addGraph(GraphDto graphDto) {
