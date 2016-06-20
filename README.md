@@ -1,10 +1,11 @@
 # README #
 
 ### Quick summary ###
+.NET Engineer coding challenge #1
 
 I managed to implement service layer for adding graphs based on Elasticsearch storage. Storage is embedded so its setup during running webapi module automatically. 
 
-Unfortunately amount of work required for whole challenge in my opinion requires much more time to do it properly instead of implementing it in rush.  Thats way I focused on testing  service layer, as its main component which should guarantee that bad state is not persisted, and basic domain model should allow to extend this application further.
+Unfortunately amount of work required for whole challenge in my opinion requires much more time (much more than expected 3-4 hours) to do it properly instead of implementing it in rush.  Thats way I focused on testing  service layer, as its main component which should guarantee that bad state is not persisted, and basic domain model should allow to extend this application further.
 
 
 ### What I need to run it? ###
